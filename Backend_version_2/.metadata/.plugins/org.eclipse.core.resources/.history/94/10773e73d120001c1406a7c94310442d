@@ -1,0 +1,13 @@
+package com.shopping.repository;
+
+import java.util.Optional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shopping.entities.Rates;
+import com.shopping.entities.Role;
+import com.shopping.enums.ERole;
+
+public interface RateRepository extends JpaRepository<Rates, Long> {
+
+}

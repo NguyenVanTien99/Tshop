@@ -1,0 +1,14 @@
+package com.shopping.services;
+
+import java.util.List;
+
+import org.springframework.data.domain.Page;
+
+import com.shopping.dto.ProductCategoryDTO;
+
+public interface ProductCategoryService {
+	
+	List<ProductCategoryDTO> getAll();
+	
+
+}

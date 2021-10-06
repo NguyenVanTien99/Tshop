@@ -1,0 +1,14 @@
+package com.shopping.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.shopping.entities.Order;
+import com.shopping.entities.OrderDetail;
+
+public interface OrderDetailRepository extends JpaRepository<OrderDetail, Long> {
+	
+	Page<OrderDetail> findByUserId(Long id, Pageable pageable);
+
+}

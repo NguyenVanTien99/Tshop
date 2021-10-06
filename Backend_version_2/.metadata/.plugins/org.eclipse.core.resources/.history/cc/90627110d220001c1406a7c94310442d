@@ -1,0 +1,17 @@
+package com.shopping.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.shopping.converter.RateConverter;
+import com.shopping.repository.RateRepository;
+import com.shopping.services.RateService;
+
+public class RateServiceImpl implements RateService {
+	
+	@Autowired
+	RateRepository rateRepository;
+	
+	@Autowired
+	RateConverter rateConverter;
+
+}

@@ -1,0 +1,66 @@
+package com.shopping.dto;
+
+import java.util.Date;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.shopping.entities.Product;
+import com.shopping.entities.User;
+
+public class RateDTO {
+
+	private Integer id;
+
+	private Double start;
+
+	private String comment;
+
+	private Date dateRate;
+	
+	private User user;
+
+	private ProductDTO product;
+
+	public RateDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Double getStart() {
+		return start;
+	}
+
+	public void setStart(Double start) {
+		this.start = start;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public Date getDateRate() {
+		return dateRate;
+	}
+
+	public void setDateRate(Date dateRate) {
+		this.dateRate = dateRate;
+	}
+
+	// private User user;
+
+	// private Product product;
+
+}

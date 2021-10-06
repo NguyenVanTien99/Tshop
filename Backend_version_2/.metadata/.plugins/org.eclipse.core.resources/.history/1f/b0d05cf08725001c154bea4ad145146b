@@ -1,0 +1,55 @@
+package com.shopping.services.impl;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import com.shopping.converter.ProductCategoryConverter;
+import com.shopping.dto.ProductCategoryDTO;
+import com.shopping.dto.ProductDTO;
+import com.shopping.entities.Product;
+import com.shopping.entities.ProductCategory;
+import com.shopping.repository.ProductCategoryRepository;
+import com.shopping.services.ProductCategoryService;
+
+@Service
+public class ProductCategoryServiceImpl implements ProductCategoryService {
+	@Autowired
+	ProductCategoryRepository productCategoryRepository;
+	
+	@Autowired
+	ProductCategoryConverter productCategoryConverter;
+
+	@Override
+	public List<ProductCategoryDTO> getAll() {
+		List<ProductCategory> categories = productCategoryRepository.findAll();
+		
+		List<ProductCategoryDTO> categoryDTOs = new ArrayList<ProductCategoryDTO>();
+		
+		for (ProductCategory category : categories) {
+			categoryDTOs.add(productCategoryConverter.toDTO(category));
+		}
+
+		return categoryDTOs;
+		
+	}
+
+	@Override
+	public Page<ProductCategoryDTO> getAllPaginate(Integer page, Integer size) {
+		
+		Pageable paging = PageRequest.of(page, size);
+
+		Page<ProductCategory> productsPage = productCategoryRepository.findAll(paging);
+
+		Page<ProductCategoryDTO> productsDtoPage = productCategoryConverter.toPageProductDto(productsPage);
+
+		return productsDtoPage;
+	}
+
+
+}

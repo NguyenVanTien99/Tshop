@@ -1,0 +1,161 @@
+package com.shopping.dto;
+
+import java.math.BigDecimal;
+import java.util.Date;
+
+import javax.persistence.Id;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+public class ProductDTO { 
+	
+	@Id
+	private Long id;
+	
+	@NotEmpty
+	@Pattern(regexp = "([A-Za-z]+-)+[0-9]+")
+	private String sku;
+	
+	@NotEmpty
+	@Size(min = 2, message = "Product name should have at least 2 characters")
+	private String name;
+
+	@NotEmpty
+	@Size(max = 255, message = "Product description should have at least 255 characters")
+	private String description;
+	
+	@NotNull
+	@Min(0)
+	private BigDecimal unitPrice;
+	
+	private String imageUrl;
+	
+	@NotNull
+	private Boolean active;
+	
+	@NotNull
+	@Min(0)
+	private int unitInStock;
+
+	private Date dateCreated;
+
+	private Date lastUpdated;
+	
+	private ProductCategoryDTO category;
+	
+	public ProductDTO() {
+		super();
+	}
+
+	public ProductDTO(Long id, String sku, String name, String description, BigDecimal unitPrice, String imageUrl,
+			Boolean active, int unitInStock, Date dateCreated, Date lastUpdated,ProductCategoryDTO categoryDTO) {
+		super();
+		this.id = id;
+		this.sku = sku;
+		this.name = name;
+		this.description = description;
+		this.unitPrice = unitPrice;
+		this.imageUrl = imageUrl;
+		this.active = active;
+		this.unitInStock = unitInStock;
+		this.dateCreated = dateCreated;
+		this.lastUpdated = lastUpdated;
+		this.category = categoryDTO;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getSku() {
+		return sku;
+	}
+
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public BigDecimal getUnitPrice() {
+		return unitPrice;
+	}
+
+	public void setUnitPrice(BigDecimal unitPrice) {
+		this.unitPrice = unitPrice;
+	}
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
+	public int getUnitInStock() {
+		return unitInStock;
+	}
+
+	public void setUnitInStock(int unitInStock) {
+		this.unitInStock = unitInStock;
+	}
+
+	public Date getDateCreated() {
+		return dateCreated;
+	}
+
+	public void setDateCreated(Date dateCreated) {
+		this.dateCreated = dateCreated;
+	}
+
+	public Date getLastUpdated() {
+		return lastUpdated;
+	}
+
+	public void setLastUpdated(Date lastUpdated) {
+		this.lastUpdated = lastUpdated;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public ProductCategoryDTO getCategory() {
+		return category;
+	}
+
+	public void setCategory(ProductCategoryDTO category) {
+		this.category = category;
+	}
+	
+	
+
+	
+
+}

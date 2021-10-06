@@ -1,0 +1,36 @@
+package com.shopping.services.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.stereotype.Service;
+
+import com.shopping.converter.OrderConverter;
+import com.shopping.dto.OrderDTO;
+import com.shopping.entities.Order;
+import com.shopping.repository.OrderRepository;
+import com.shopping.services.OrderService;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+
+	@Autowired
+	OrderRepository orderRepository;
+
+	@Autowired
+	OrderConverter orderConverter;
+
+	@Override
+	public OrderDTO save(OrderDTO orderDTO) {
+
+		Order order = orderRepository.save(orderConverter.toEntity(orderDTO));
+
+		return orderConverter.toDTO(order);
+	}
+
+	@Override
+	public Page<OrderDTO> getByUserId(Long id, Integer page, Integer size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

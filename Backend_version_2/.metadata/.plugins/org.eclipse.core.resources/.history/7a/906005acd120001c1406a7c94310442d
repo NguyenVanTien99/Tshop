@@ -1,0 +1,5 @@
+package com.shopping.services.impl;
+
+public class RateServiceImpl {
+
+}
